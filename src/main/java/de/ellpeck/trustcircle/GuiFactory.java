@@ -7,11 +7,14 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.IModGuiFactory;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+@SideOnly(Side.CLIENT)
 public class GuiFactory implements IModGuiFactory{
 
     @Override
@@ -30,17 +33,7 @@ public class GuiFactory implements IModGuiFactory{
     }
 
     @Override
-    public Class<? extends GuiScreen> mainConfigGuiClass(){
-        return ConfigGui.class;
-    }
-
-    @Override
     public Set<RuntimeOptionCategoryElement> runtimeGuiCategories(){
-        return null;
-    }
-
-    @Override
-    public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element){
         return null;
     }
 
@@ -51,7 +44,7 @@ public class GuiFactory implements IModGuiFactory{
         }
 
         private static List<IConfigElement> getConfigElements(){
-            return Collections.<IConfigElement>singletonList(new ConfigElement(TrustCircle.config.getCategory(Configuration.CATEGORY_GENERAL)));
+            return Collections.singletonList(new ConfigElement(TrustCircle.config.getCategory(Configuration.CATEGORY_GENERAL)));
         }
     }
 }

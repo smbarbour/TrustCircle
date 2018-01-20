@@ -6,9 +6,11 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public class PotionTrust extends Potion{
 
@@ -22,8 +24,9 @@ public class PotionTrust extends Potion{
         this.setIconIndex(0, 0);
 
         this.registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, "39EC7064-6A60-4F59-8BBE-C2C23A6DD7A9", 0D, 0);
+        this.setRegistryName(TrustCircle.MOD_ID, name);
 
-        GameRegistry.register(this, new ResourceLocation(TrustCircle.MOD_ID, name));
+        ForgeRegistries.POTIONS.register(this);
     }
 
     @Override
